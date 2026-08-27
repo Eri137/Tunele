@@ -2,6 +2,7 @@ function GuessBoard({ guesses }) {
   const totalAttempts = 5;
   const rows = Array.from({ length: totalAttempts }, (_, i) => guesses[i] || null);
 
+  
   return (
     <div>
       <div className="section-label">Guesses</div>
