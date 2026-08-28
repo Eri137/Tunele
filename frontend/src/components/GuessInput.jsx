@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { API_BASE_URL } from "../config";
 
 function GuessInput({ onSubmitGuess, disabled }) {
   const [query, setQuery] = useState("");
@@ -19,7 +20,7 @@ function GuessInput({ onSubmitGuess, disabled }) {
 
     debounceRef.current = setTimeout(async () => {
       try {
-        const res = await fetch(`http://localhost:3001/api/search?q=${encodeURIComponent(query)}`);
+        const res = await fetch(`${API_BASE_URL}/api/search?q=${encodeURIComponent(query)}`);
         const data = await res.json();
 
         if (!Array.isArray(data)) {

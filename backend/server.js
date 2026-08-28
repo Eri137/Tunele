@@ -6,7 +6,7 @@ import { getRandomSong } from "./utils/randomSong.js";
 import { startNewRound, loadProgress, saveProgress } from "./utils/progress.js";
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());

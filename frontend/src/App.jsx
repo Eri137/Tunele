@@ -7,6 +7,7 @@ import GuessInput from "./components/GuessInput";
 import GameResultModal from "./components/GameResultModal";
 import HowToPlayModal from "./components/HowToPlayModal";
 import { getPlayerId } from "./utils/playerId";
+import { API_BASE_URL } from "./config";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState("Pop");
@@ -25,7 +26,7 @@ function App() {
     setRevealSong(null);
 
     try {
-      const res = await fetch("http://localhost:3001/api/start-round", {
+      const res = await fetch(`${API_BASE_URL}/api/start-round`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ playerId, genre, difficulty }),
@@ -47,7 +48,7 @@ function App() {
     if (gameStatus !== "playing") return;
 
     try {
-      const res = await fetch("http://localhost:3001/api/guess", {
+      const res = await fetch(`${API_BASE_URL}/api/guess`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
